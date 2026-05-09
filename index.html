@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+            <html lang="vi">
+            <head>
+            <meta charset="UTF-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+            <title>🎬 Xem phim full miễn phí</title>
+
+            <meta property="og:title" content="🎬 Xem phim full miễn phí">
+            <meta property="og:description" content="Click để xem phim cực hay 🔥">
+            <meta property="og:image" content="https://img.youtube.com/vi/t8-pk0y7KbE/hqdefault.jpg">
+            <meta property="og:url" content="https://MEDIA2027.github.io/reviewphim_t8-pk0y7KbE/">
+
+            <style>
+            body{
+            margin:0;
+            background:#111;
+            font-family:sans-serif;
+            display:flex;
+            justify-content:center;
+            align-items:center;
+            height:100vh;
+            color:white;
+            }
+
+            .card{
+            width:95%;
+            max-width:400px;
+            background:#1c1c1c;
+            border-radius:20px;
+            overflow:hidden;
+            box-shadow:0 10px 40px rgba(0,0,0,0.6);
+            text-align:center;
+            }
+
+            .card img{
+            width:100%;
+            height:220px;
+            object-fit:cover;
+            cursor:pointer;
+            }
+
+            .card-body{
+            padding:15px;
+            }
+
+            .btn{
+            display:block;
+            width:100%;
+            padding:12px;
+            margin-top:10px;
+            border:none;
+            border-radius:25px;
+            font-size:16px;
+            cursor:pointer;
+            background:red;
+            color:white;
+            }
+
+            .video-container{
+            display:none;
+            margin-top:10px;
+            }
+
+            .video-container iframe{
+            width:100%;
+            height:220px;
+            border:none;
+            border-radius:15px;
+            }
+            </style>
+            </head>
+
+            <body>
+
+            <div class="card">
+
+            <img src="https://img.youtube.com/vi/t8-pk0y7KbE/hqdefault.jpg" onclick="playVideo()">
+
+            <div class="card-body">
+
+            <button class="btn" onclick="playVideo()">▶ Xem Phim</button>
+            <button class="btn" onclick="goShopee()">👉 Ủng Hộ Shopee</button>
+
+            <div class="video-container" id="videoBox">
+            <iframe id="videoFrame" allow="autoplay" allowfullscreen></iframe>
+            </div>
+
+            </div>
+            </div>
+
+            <script>
+
+            const shopeeLink = "https://s.shopee.vn/6pxP7wSLCd";
+
+            let autoTimer = null;
+
+            // ==================================================
+            // PLAY VIDEO
+            // ==================================================
+            function playVideo() {
+
+                const frame = document.getElementById("videoFrame");
+                const box = document.getElementById("videoBox");
+
+                frame.src = "https://www.youtube.com/embed/t8-pk0y7KbE?autoplay=1";
+                box.style.display = "block";
+            }
+
+            // ==================================================
+            // GO SHOPEE
+            // ==================================================
+            function goShopee() {
+
+                // Hủy timer nếu còn
+                if (autoTimer !== null) {
+                    clearTimeout(autoTimer);
+                    autoTimer = null;
+                }
+
+                // Đánh dấu đã mở
+                sessionStorage.setItem("shopeeOpened", "true");
+
+                // Redirect luôn
+                window.open(shopeeLink, "_blank");
+            }
+
+            // ==================================================
+            // AUTO REDIRECT
+            // ==================================================
+            window.addEventListener("load", function () {
+
+                // Nếu chưa mở
+                if (!sessionStorage.getItem("shopeeOpened")) {
+
+                    autoTimer = setTimeout(function () {
+
+                        sessionStorage.setItem("shopeeOpened", "true");
+
+                        window.open(shopeeLink, "_blank");
+
+                    }, 6000);
+
+                }
+
+            });
+
+            </script>
+
+
+            </body>
+            </html>
+            
